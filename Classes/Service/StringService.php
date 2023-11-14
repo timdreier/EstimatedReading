@@ -1,5 +1,5 @@
 <?php
-namespace Pottkinder\Estimatedreading\Service;
+namespace TimDreier\TdReadingTime\Service;
 
 /**
  * Service model for string work

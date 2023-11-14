@@ -1,10 +1,6 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
-}
+defined('TYPO3') || die();
 
-/**
- * Hook for HTML-modification on the page
- */
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = \Pottkinder\Estimatedreading\Service\FrontendRenderService::updateUncachedContent();
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-all'][] = \Pottkinder\Estimatedreading\Service\FrontendRenderService::updateCachedContent();
+if (!array_key_exists('readingtime_cache', $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'])) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['readingtime_cache'] = [];
+}

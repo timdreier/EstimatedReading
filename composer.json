@@ -1,54 +1,34 @@
 {
-  "name": "pottkinder/estimatedreading",
+  "name": "timdreier/td-reading-time",
   "type": "typo3-cms-extension",
   "description": "Counts words and sentences and calculates estimated reading for this.",
   "keywords": [
     "TYPO3",
     "extension",
-    "estimatedreading"
+    "TdReadingTime"
   ],
-  "homepage": "https://www.agentur-pottkinder.de/",
+  "homepage": "https://tim-dreier.de/",
   "authors": [
     {
-      "name": "Bastian Bringenberg",
+      "name": "Tim Dreier",
       "role": "Developer",
-      "homepage": "https://www.agentur-pottkinder.de/"
+      "homepage": "https://tim-dreier.de/"
     }
   ],
   "license": [
     "GPL-2.0+"
   ],
   "require": {
-    "typo3/cms-core": ">=8.7.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~4.8.0",
-    "friendsofphp/php-cs-fixer": "^2.0"
+    "typo3/cms-core": "^11 || ^12"
   },
   "autoload": {
     "psr-4": {
-      "Pottkinder\\Estimatedreading\\": "Classes"
+      "TimDreier\\TdReadingTime\\": "Classes"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Pottkinder\\Estimatedreading\\Tests\\": "Tests"
-    }
-  },
-  "config": {
-    "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin"
-  },
-  "scripts": {
-    "post-autoload-dump": [
-      "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/estimatedreading ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/estimatedreading"
-    ]
   },
   "extra": {
     "typo3/cms": {
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".Build/Web"
+      "extension-key": "td_reading_time"
     }
   }
 }

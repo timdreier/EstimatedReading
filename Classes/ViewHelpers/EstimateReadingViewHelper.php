@@ -1,5 +1,5 @@
 <?php
-namespace Pottkinder\Estimatedreading\ViewHelpers;
+namespace TimDreier\TdReadingTime\ViewHelpers;
 
 /**
  * ViewHelper to display informations about given StringGroup
@@ -17,16 +17,15 @@ namespace Pottkinder\Estimatedreading\ViewHelpers;
  *           e.g.: "Reading the following blog article takes 5 minutes." shows 5 minutes before the blog article
  *           is shown.
  */
-class EstimateReadingViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class EstimateReadingViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
 {
-
     /**
      * Initialize arguments
      */
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('keyword', 'string', 'Keyword to Manage multiple EstimatedReadings', true, 'default');
+        $this->registerArgument('keyword', 'string', 'Keyword to Manage multiple TdReadingTimes', true, 'default');
         $this->registerArgument('variable', 'string', 'Variable to look up in StringGroup', true, '');
     }
 
@@ -40,6 +39,6 @@ class EstimateReadingViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstrac
         if ($this->arguments['variable'] === '') {
             throw new Exception('Attribute "variable" of Tag EstimateReading cannot be empty!');
         }
-        return '###pkEstimateReading_' . $this->arguments['keyword'] . '_' . $this->arguments['variable'] . '###';
+        return '###tdEstimateReading_' . $this->arguments['keyword'] . '_' . $this->arguments['variable'] . '###';
     }
 }

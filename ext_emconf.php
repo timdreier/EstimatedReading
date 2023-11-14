@@ -1,12 +1,12 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-        'title' => 'Pottkinder: Estimated Reading',
+        'title' => 'Estimated Reading',
         'description' => 'Counts words and sentences and calculates estimated reading for this.',
         'category' => 'services',
-        'author' => 'Bastian Bringenberg',
-        'author_email' => 'bastian@agentur-pottkinder.de',
-        'author_company' => 'Agentur Pottkinder',
+        'author' => 'Tim Dreier',
+        'author_email' => 'hello@tim-dreier.de',
+        'author_company' => 'Tim Dreier',
         'priority' => '',
         'module' => '',
         'state' => 'stable',
@@ -17,12 +17,12 @@ $EM_CONF[$_EXTKEY] = [
         'version' => '1.0.0',
         'autoload' => [
             'psr-4' => [
-                'Pottkinder\\Estimatedreading\\' => 'Classes',
+                'TimDreier\\TdReadingTime\\' => 'Classes',
             ],
         ],
         'constraints' => [
                 'depends' => [
-                        'typo3' => '8.7.99',
+                        'typo3' => '>=11.0.0',
                 ],
                 'conflicts' => [],
                 'suggests' => [],

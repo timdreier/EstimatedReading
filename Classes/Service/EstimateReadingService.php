@@ -1,14 +1,13 @@
 <?php
-namespace Pottkinder\Estimatedreading\Service;
+namespace TimDreier\TdReadingTime\Service;
 
-use Pottkinder\Estimatedreading\Model\StringGroup;
+use TimDreier\TdReadingTime\Model\StringGroup;
 
 /**
- * Service Model for EstimatedReading StringGroups
+ * Service Model for TdReadingTime StringGroups
  */
 class EstimateReadingService
 {
-
     /**
      * Array for methodNames of Class StringGroup
      * @var array
@@ -24,10 +23,10 @@ class EstimateReadingService
     public static function getKeywordStringGroup(string $keyword)
     {
         $keyword = self::validateKeyword($keyword);
-        if (!isset($GLOBALS['EXT']['estimatedreading']['stringgroup'][$keyword])) {
+        if (!isset($GLOBALS['EXT']['TdReadingTime']['stringgroup'][$keyword])) {
             return new StringGroup('');
         } else {
-            return $GLOBALS['EXT']['estimatedreading']['stringgroup'][$keyword];
+            return $GLOBALS['EXT']['TdReadingTime']['stringgroup'][$keyword];
         }
     }
 
@@ -40,13 +39,13 @@ class EstimateReadingService
     public static function addStringToKeyword(string $keyword, string $string)
     {
         $keyword = self::validateKeyword($keyword);
-        if (!isset($GLOBALS['EXT']['estimatedreading']['stringgroup'][$keyword])) {
-            $GLOBALS['EXT']['estimatedreading']['stringgroup'][$keyword] = new StringGroup($string);
+        if (!isset($GLOBALS['EXT']['TdReadingTime']['stringgroup'][$keyword])) {
+            $GLOBALS['EXT']['TdReadingTime']['stringgroup'][$keyword] = new StringGroup($string);
         } else {
             /**
              * @var StringGroup $tmp
              */
-            $tmp = $GLOBALS['EXT']['estimatedreading']['stringgroup'][$keyword];
+            $tmp = $GLOBALS['EXT']['TdReadingTime']['stringgroup'][$keyword];
             $tmp->addString($string);
         }
     }
@@ -84,10 +83,10 @@ class EstimateReadingService
             'search' => [],
             'replace' => []
         ];
-        foreach ($GLOBALS['EXT']['estimatedreading']['stringgroup'] as $stringGroupTitle => $stringGroupContent) {
+        foreach ($GLOBALS['EXT']['TdReadingTime']['stringgroup'] as $stringGroupTitle => $stringGroupContent) {
             $stringGroupCalculated = self::buildReplaceValues($stringGroupContent);
             foreach ($stringGroupCalculated as $stringGroupCalculatedTitle => $stringGroupCalulatedValue) {
-                $return['search'][] = '###pkEstimateReading_' . $stringGroupTitle . '_' . $stringGroupCalculatedTitle . '###';
+                $return['search'][] = '###tdEstimateReading_' . $stringGroupTitle . '_' . $stringGroupCalculatedTitle . '###';
                 $return['replace'][] = $stringGroupCalulatedValue;
             }
         }
@@ -98,7 +97,7 @@ class EstimateReadingService
      * function buildReplaceValues
      * Generates an array with all Getters from StringGroup associated with it's value
      *
-     * @param \Pottkinder\Estimatedreading\Model\StringGroup $content
+     * @param \TimDreier\TdReadingTime\Model\StringGroup $content
      * @return array
      */
     protected static function buildReplaceValues($content)
@@ -115,7 +114,7 @@ class EstimateReadingService
      * function buildMethodNamesIfRequired
      * Shorts all Get Methods from StringGroup for replacement strings
      *
-     * @param \Pottkinder\Estimatedreading\Model\StringGroup $content
+     * @param \TimDreier\TdReadingTime\Model\StringGroup $content
      */
     protected static function buildMethodNamesIfRequired($content)
     {

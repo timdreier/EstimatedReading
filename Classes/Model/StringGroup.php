@@ -1,7 +1,7 @@
 <?php
-namespace Pottkinder\Estimatedreading\Model;
+namespace TimDreier\TdReadingTime\Model;
 
-use Pottkinder\Estimatedreading\Service\StringService;
+use TimDreier\TdReadingTime\Service\StringService;
 
 /**
  * Model for temporary Collection of String Information
@@ -56,7 +56,7 @@ class StringGroup
         $this->words = $tmp['words'];
         $this->charsWithoutSpaces = $tmp['charsWithoutSpaces'];
         $this->sentences = $tmp['sentences'];
-        $this->rebuildEstimatedReading();
+        $this->rebuildTdReadingTime();
     }
 
     /**
@@ -104,10 +104,10 @@ class StringGroup
     }
 
     /**
-     * function rebuildEstimatedReading
+     * function rebuildTdReadingTime
      * recalculates the needed amount of seconds
      */
-    public function rebuildEstimatedReading()
+    public function rebuildTdReadingTime()
     {
         $tmp = $this->getWords();
         $tmp = $tmp / 200;

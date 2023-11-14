@@ -1,9 +1,8 @@
-# Pottkinder: EstimateReading
+# TD Reading Time
 
-This small TYPO3 v8.7 Extension provides you the possibility to display information of given string. For example it displays the time you normally need to read an article, counts chars and sentences for you and is able to work with different articles on the same page if required.
+This TYPO3 extension is a fork of [EstimatedReading](https://github.com/AgenturPottkinder/EstimatedReading) with support for newer TYPO3 Versions. It provides you the possibility to display information of given string. For example it displays the time you normally need to read an article, counts chars and sentences for you and is able to work with different articles on the same page if required.
 
 ## Important:
-
 This script is not for academic usage. It is counting and not calculating and that very unprecise, as it is no language KI but a small script. This is what is does:
 
 * Remove all tags
@@ -12,9 +11,12 @@ This script is not for academic usage. It is counting and not calculating and th
 * count sentences by finding `.`, `!` and `?`
 * calculating required time based on amount of words. No magic here.
 
-# Usage
+## Installation
+Install with composer: `composer req timdreier/td-reading-time`
 
-## Collecting Chars and Sentences
+## Usage
+
+### Collecting Chars and Sentences
 
 There is a new ViewHelper available which you are allowed to put around your normal content and that should be everything. The viewhelper needs to get a keyword to identify what you are currently tracking. This way you are able to also collect list entries for example.
 
@@ -23,7 +25,7 @@ Of course you are able to use the same keyword a few times. That way this extens
 To collect information for our normal content output we just need to enable the namespace and wrap our `f:format.raw` tag like this:
 
 ```
-{namespace estimateReading = Pottkinder\Estimatedreading\ViewHelpers}
+{namespace estimateReading = TimDreier\TdReadingTime\ViewHelpers}
 
 <estimateReading:CollectString keyword="test">
     <f:format.raw>{content}</f:format.raw>
@@ -38,10 +40,10 @@ hello world
 
 If `{content}` equals `hello world`.
 
-## Viewing Time and Statistics
+### Viewing Time and Statistics
 
 ```
-{namespace estimateReading = Pottkinder\Estimatedreading\ViewHelpers}
+{namespace estimateReading = TimDreier\TdReadingTime\ViewHelpers}
 Reading this 
 <estimateReading:EstimateReading keyword="test" variable="chars" /> chars long text requires you: 
 <estimateReading:EstimateReading keyword="test" variable="hours" /> hours,
@@ -58,7 +60,7 @@ Reading this 400 chars long text requires you:
 20 seconds
 ```
 
-## Fields to use
+### Fields to use
 
 As read above you are able to use some variables for your keyword. Here is a list what you are able to use:
 
@@ -75,11 +77,8 @@ As read above you are able to use some variables for your keyword. Here is a lis
 | minutes            | Shows amount of minutes (without hours)             | 30       |
 | seconds            | Shows amount of seconds (without hours and minutes) | 31       |
 
+## Requirements
 
-# Support and Disclamer
-
-This extension is written by Bastian Bringenberg for Agentur Pottkinder based in Bochum, Germany.
-
-If you need support or find a bug please open a ticket here on github. If you find a security problem or need a payed extension please send me a mail to <bastian@agentur-pottkinder.de>.
-
-This extension is for free use but please respect the GPLv2 rights. This extension is like all extensions under GPLv2 ( https://typo3.org/index.php?id=782 ).
+| Extension version | TYPO3 v12 | TYPO3 v11 |
+|-------------------|-----------|-----------|
+| 1.x               | x         | x         |

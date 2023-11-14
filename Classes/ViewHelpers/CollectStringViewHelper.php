@@ -1,5 +1,5 @@
 <?php
-namespace Pottkinder\Estimatedreading\ViewHelpers;
+namespace TimDreier\TdReadingTime\ViewHelpers;
 
 /**
  * ViewHelper to collect informations about the substring
@@ -12,9 +12,8 @@ namespace Pottkinder\Estimatedreading\ViewHelpers;
  * The normal Output
  * </output>
  */
-class CollectStringViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class CollectStringViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
 {
-
     /**
      * @var bool
      */
@@ -31,7 +30,7 @@ class CollectStringViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('keyword', 'string', 'Keyword to Manage multiple EstimatedReadings', true, 'default');
+        $this->registerArgument('keyword', 'string', 'Keyword to Manage multiple TdReadingTimes', true, 'default');
     }
 
     /**
@@ -42,7 +41,7 @@ class CollectStringViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
     public function render()
     {
         $string = $this->renderChildren();
-        \Pottkinder\Estimatedreading\Service\EstimateReadingService::addStringToKeyword($this->arguments['keyword'], $string);
+        \TimDreier\TdReadingTime\Service\EstimateReadingService::addStringToKeyword($this->arguments['keyword'], $string);
         return $string;
     }
 }
